@@ -19,7 +19,7 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(['$routeProvider','$locationProvider',function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -33,9 +33,9 @@ angular
         redirectTo: '/'
       });
     $locationProvider.html5Mode(true);
-  })
-  .factory('Mongo',function($resource){
-    var Mongo = $resource('https://api.mongolab.com/api/1/databases/icondb/collections/members/:id',{apiKey:'ADC72CZaYJG4KMTcRrxjyiNzcUAJ568P'},{update:{method:'PUT'}})
+  }])
+  .factory('Mongo',['$resource',function($resource){
+    var Mongo  = $resource('https://api.mongolab.com/api/1/databases/icondb/collections/members/:id',{apiKey:'ADC72CZaYJG4KMTcRrxjyiNzcUAJ568P'},{update:{method:'PUT'}});
     return Mongo;
-  });
+  }]);
 

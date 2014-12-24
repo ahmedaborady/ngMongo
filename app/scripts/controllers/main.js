@@ -8,6 +8,6 @@
  * Controller of the iconApp02App
  */
 angular.module('iconApp02App')
-  .controller('MainCtrl', function ($scope,Mongo) {
+  .controller('MainCtrl', ['$scope','Mongo',function ($scope,Mongo) {
   $scope.members = Mongo.query();
-  });
+  }]);
